@@ -2,25 +2,20 @@
 
 cd ..
 cd DBs
-num=$(ls *)
-flag=1
-count=0
+num=`ls`
+count=1
 if [ -z "$num" ];then
 	echo no DataBases avilable.
 else
 	echo The DataBases are :
-	echo Table Name \|  Tables
-	echo ==============================
+	echo DataBases
+	echo \|=================\|
 	for i in $num
-	do
-		if [[ $i == *":" ]];then	
-			printf "\n%12s" $i
-		else
-			printf "%s|" $i
-	fi
+	do	
+		printf "|%i %15s|\n" $count $i
+		((count++))
 	done
-	echo
-	echo ==============================
+	echo \|=================\|
 fi
 
 cd ..

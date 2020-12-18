@@ -3,14 +3,19 @@
 DBName=$1
 cd ..
 cd DBs
+count=1
 if [ -d $DBName ];then
-	echo the Tables are \:
+	echo the Tables are 
 	cd $DBName
 	num=`ls`
+	echo \|=================\|
 	for i in $num
 	do
-	echo $i
+	printf "|%i %15s|\n" $count $i
+	((count++))
 	done
+	echo \|=================\|
+
 	cd ..
 	cd ..
 	cd scripts

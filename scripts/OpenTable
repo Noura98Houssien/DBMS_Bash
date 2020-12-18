@@ -1,17 +1,19 @@
 #!/bin/bash
 
 DBName=$1
+./ListTables $DBName
 echo enter Table Name
 read TableName
 cd ..
 cd DBs/$DBName/
-echo =================DataBase $DBName =================
-echo =================Table $TableName =================
+
 if [ -z "$TableName" ];then
 	echo please enter the Name of the Table.
 elif  [[ $TableName == *" "* ]] || [[ $TableName == [1-9]* ]] || [[ $TableName == *['!'@#\$%^\&*()_+]* ]] ;then
 	echo not a good format
 elif [ -f $TableName ];then
+	echo =================DataBase $DBName =================
+	echo =================Table $TableName =================
 	cd ..
 	cd ..
 	cd scripts
@@ -19,8 +21,9 @@ elif [ -f $TableName ];then
 else
 	echo table not existed
 	echo press enter to see the menu.
-	exit
+	cd ..
+	cd ..
+	cd scripts
 fi
 
-cd ..
-cd scripts
+

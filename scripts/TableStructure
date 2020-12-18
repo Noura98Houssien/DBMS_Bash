@@ -1,7 +1,6 @@
 #!/bin/bash
 
 DBName=$1
-echo ===============$DBName==========
 ./ListTables $DBName
 cd ..
 cd DBs/$DBName/
@@ -17,8 +16,9 @@ elif  [[ $TableName == *" "* ]] || [[ $TableName == [1-9]* ]] || [[ $TableName =
 elif [ -f $TableName ];then
 colName=`awk -F: '{if(NR==1){i=1;while(i<=NF){print $i;i++}}}' .$TableName`
 colType=`awk -F: '{if(NR==2){i=1;while(i<=NF){if($i=="i"){$i="INTEGER"}else{$i="STRING"}print $i;i++}}}' .$TableName`
-
+count=1
 i=1
+printf  "%s Structure\n|===========================================|" $TableName
 for var  in $colName
 do
 	j=1
@@ -26,18 +26,18 @@ do
 	do
 		if [ $i -eq $j ];then
 			if [ $i -eq 1 ];then
-			echo $var "\\\\" $x "\\\\" PRIMARY KEY
+			printf "\n|%i %10s %10s PRIMARY KEY        |" $count $var $x 
 			else
-			echo $var "\\\\" $x
-			#dialog --title 'this is the a table Structure' --msgbox  \'$var \\\\ $x\' 5 20
+			printf "\n|%i %10s %10s                    |" $count $var $x 
 			fi
+		((count++))
 		break
 		fi
 		((j++))
 	done
 ((i++))
 done 
-
+printf  "\n|===========================================|\n"
 else
 	echo table not existed
 fi
@@ -45,4 +45,5 @@ fi
 cd ..
 cd ..
 cd scripts
+echo
 echo press enter to see the menu.
