@@ -14,7 +14,7 @@ elif [ -d $DBName ];then
 
 	cd ..
 	cd scripts
-	./lvl2 $DBName
+source ./lvl2 $DBName
 else
 	echo DataBase not existed
 	echo press enter to see the menu.

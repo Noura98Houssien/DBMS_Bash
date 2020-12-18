@@ -5,6 +5,7 @@ DBName=$1
 cd ..
 cd DBs/$DBName
 
+
 found=0
 declare -a line1
 declare -a line2
@@ -15,7 +16,7 @@ while [ -z "$TableName" ];do
 	echo please enter the Name of the Table.
         read -p "Enter the name of New Table:" TableName
 done
-while  [[ $TableName == *" "* ]] || [[ $TableName == [1-9]* ]] || [[ $TableName == *['!'@#\$%^\&*()+]* ]] ;do
+while  [[ $TableName == *" "* ]] || [[ $TableName == [1-9]* ]] || [[ $TableName == *['!'@#\$%^\&*()_+]* ]] ;do
 	echo not a good format
         read -p "Enter the name of New Table:" TableName
 done
@@ -36,7 +37,7 @@ while [ -z "$ColName" ];do
 	echo please enter the Name of the Column.
         read -p "Enter the Column No.$i Name:" ColName
 done
-while  [[ $ColName == *" "* ]] || [[ $ColName == [1-9]* ]] || [[ $ColName == *['!'@#\$%^\&*()+]* ]] ;do
+while  [[ $ColName == *" "* ]] || [[ $ColName == [1-9]* ]] || [[ $ColName == *['!'@#\$%^\&*()_+]* ]] ;do
 
 
 	echo not a good format
@@ -44,8 +45,7 @@ while  [[ $ColName == *" "* ]] || [[ $ColName == [1-9]* ]] || [[ $ColName == *['
 done
 for col in ${line1[@]}
 do
-	echo $col prev
-	echo $ColName current
+	
 while [[ "$col" == "$ColName" ]]; do
     echo the column name already exist!
     read -p "Enter the Column No.$i Name:" ColName
@@ -54,11 +54,11 @@ done
 
 line1[$i]=$ColName
 
-read -p "Choose data type for Column No.$i 1)for INTEGER 2)for STRING:" choise
+read -p "Choose data type for Column No.$i  (1)for INTEGER (2)for STRING:" choise
 until [[ $choise == 1 ]] ||[[ $choise == 2 ]]
 do
-	echo Datetype not  INTEGER or STRING
-        read -p "Choose data type for Column No.$i 1)for INTEGER 2)for STRING:" choise
+	echo Datetype must be  INTEGER or STRING
+        read -p "Choose data type for Column No.$i  (1)for INTEGER (2)for STRING:" choise
 done
 if [[ $choise == 1 ]]
 then
