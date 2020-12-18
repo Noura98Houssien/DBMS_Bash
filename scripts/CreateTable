@@ -1,7 +1,6 @@
 #!/bin/bash
 #this is creating table script
 
-
 $DBName=$1
 cd ..
 cd DBs/$DBName
@@ -11,17 +10,20 @@ declare -a line1
 declare -a line2
 
 read -p "Enter the name of New Table:" TableName
-for name in `ls`
-do
-if [[ "$TableName" == "$name" ]]
-then
-found=1
-break
-fi
+
+while [ -z "$TableName" ];do
+	echo please enter the Name of the Table.
+        read -p "Enter the name of New Table:" TableName
+done
+while  [[ $TableName == *" "* ]] || [[ $TableName == [1-9]* ]] || [[ $TableName == *['!'@#\$%^\&*()+]* ]] ;do
+	echo not a good format
+        read -p "Enter the name of New Table:" TableName
+done
+while [[ -f "$TableName" ]]; do
+  echo the Table Name already exist!
+  read -p "Enter the name of New Table:" TableName
 done
 
-if (( $found == 0 ))
-then
 echo Enter the number of columns
 read ColNum
 line1[0]="ID"
@@ -30,42 +32,83 @@ i=1
 while (( $i <= $ColNum ))
 do
 read -p "Enter the Column No.$i Name:" ColName
-line1[$i]=:$ColName
-read -p "Enter the Column No.$i Data Type:" DataType
-until [[ "$DataType" == "INTEGER" ]] ||[[ "$DataType" == "STRING" ]];
+while [ -z "$ColName" ];do
+	echo please enter the Name of the Column.
+        read -p "Enter the Column No.$i Name:" ColName
+done
+while  [[ $ColName == *" "* ]] || [[ $ColName == [1-9]* ]] || [[ $ColName == *['!'@#\$%^\&*()+]* ]] ;do
+
+
+	echo not a good format
+        read -p "Enter the Column No.$i Name:" ColName
+done
+for col in ${line1[@]}
+do
+	echo $col prev
+	echo $ColName current
+while [[ "$col" == "$ColName" ]]; do
+    echo the column name already exist!
+    read -p "Enter the Column No.$i Name:" ColName
+done
+done
+
+line1[$i]=$ColName
+
+read -p "Choose data type for Column No.$i 1)for INTEGER 2)for STRING:" choise
+until [[ $choise == 1 ]] ||[[ $choise == 2 ]]
 do
 	echo Datetype not  INTEGER or STRING
-	read -p "Enter the Column No.$i Data Type:" DataType
+        read -p "Choose data type for Column No.$i 1)for INTEGER 2)for STRING:" choise
 done
-line2[$i]=:$DataType
-	
+if [[ $choise == 1 ]]
+then
+
+  line2[$i]="INTEGER"
+else
+  line2[$i]="STRING"	
+fi
 
 let i=$i+1
 
 done
 
+i=0
+for var in  ${line1[@]}
+do
+if [[ $i == 0 ]];then
+l1=$var
+else
+l1=$l1:$var
+fi
+let i=$i+1
+done
 
-#create a file to save the data
-touch $TableName
-echo ${line1[@]}
-echo ${line2[@]}
+echo  $l1 >> .$TableName
+i=0
 
+for var in  ${line2[@]}
+do
+if [[ $i == 0 ]];then
+l2=$var
+else
+l2=$l2:$var
+fi
+let i=$i+1
 
-# create file to save meta data 
-echo  ${line1[@]} >> .$TableName
-echo  ${line2[@]} >> .$TableName
+done
+
+echo  $l2 >> .$TableName
 
 
 echo Table $TableName Created Successfuly!
 
-else
-echo the $TableName table is already exist!
-
-fi
 
 cd ..
 cd ..
 cd scripts
 
 echo press enter to see the menu
+
+
+
 
