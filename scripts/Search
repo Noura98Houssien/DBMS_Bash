@@ -1,5 +1,31 @@
 #!/bin/bash
 #this is Search script to search in table with some condetions
 
-echo this is Search script
+DBName=$1
+TableName=$2
+	
 
+printf "Search By : ";read $field
+printf "Value : "
+read $value
+cd ..
+cd DBs/$DBName/
+
+sed -n "/$value/p" $TableName
+
+
+if [ -z "$field" ];then
+	echo please enter the Name of the Table.
+elif  [[ $field == *" "* ]] || [[ $field == [1-9]* ]] || [[ $field == *['!'@#\$%^\&*()_+]* ]] ;then
+	echo not a good format
+elif [ -f $field ];then
+	echo
+	#sed '/$field/p' $TableName
+else
+	echo table not existed
+fi
+
+cd ..
+cd ..
+cd scripts
+echo press enter to see the menu.

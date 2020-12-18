@@ -5,9 +5,9 @@ cd ..
 cd DBs
 count=1
 if [ -d $DBName ];then
-	echo the Tables are 
+	echo the Tables at $DBName
 	cd $DBName
-	num=`ls`
+	num=`ls`	
 	echo \|=================\|
 	for i in $num
 	do

@@ -1,14 +1,14 @@
 #!/bin/bash
 #this is creating table script
 
-$DBName=$1
+DBName=$1
 cd ..
 cd DBs/$DBName
 
 found=0
 declare -a line1
 declare -a line2
-
+echo $DBName
 read -p "Enter the name of New Table:" TableName
 
 while [ -z "$TableName" ];do
