@@ -1,0 +1,26 @@
+#!/bin/bash
+
+DBName=$1
+echo enter Table Name
+read TableName
+cd ..
+cd DBs/$DBName/
+echo =================DataBase $DBName =================
+echo =================Table $TableName =================
+if [ -z "$TableName" ];then
+	echo please enter the Name of the Table.
+elif  [[ $TableName == *" "* ]] || [[ $TableName == [1-9]* ]] || [[ $TableName == *['!'@#\$%^\&*()_+]* ]] ;then
+	echo not a good format
+elif [ -f $TableName ];then
+	cd ..
+	cd ..
+	cd scripts
+	./lvl3 $DBName $TableName 
+else
+	echo table not existed
+	echo press enter to see the menu.
+	exit
+fi
+
+cd ..
+cd scripts

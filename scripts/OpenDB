@@ -1,0 +1,27 @@
+#!/bin/bash
+export DBName
+./ViewDB
+echo enter DataBase name to Enter
+read DBName
+cd ..
+cd DBs
+
+if [ -z $DBName ];then
+	echo please enter the Name of the DataBase.
+elif  [[ $DBName == *" "* ]] || [[ $DBName == [1-9]* ]] || [[ $DBName == *['!'@#\$%^\&*()_+]* ]] ;then
+	echo not a good format
+elif [ -d $DBName ];then
+
+	cd ..
+	cd scripts
+	./lvl2 $DBName
+else
+	echo DataBase not existed
+	echo press enter to see the menu.
+	cd ..
+	cd scripts
+fi
+
+
+cd ..
+cd scripts

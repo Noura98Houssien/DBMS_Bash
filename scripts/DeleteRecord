@@ -1,0 +1,6 @@
+#!/bin/bash
+#this is DeleteRecord script to delete a record from a table
+
+echo this is Delete Record script
+
+

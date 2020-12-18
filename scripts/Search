@@ -1,0 +1,5 @@
+#!/bin/bash
+#this is Search script to search in table with some condetions
+
+echo this is Search script
+

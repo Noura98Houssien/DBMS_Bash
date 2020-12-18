@@ -1,0 +1,33 @@
+#!/bin/bash
+
+echo enter the name of the DB
+read DBName
+cd ..
+cd DBs
+
+if [[ -z "$DBName" ]];then
+	echo please enter the DataBase Name
+
+elif [[ $DBName == [1-9]* ]];then
+	echo can not start with a number
+
+elif [[ $DBName == *['!'@#\$%^\&*()_+]* ]];then
+	echo can not have a special caracters
+
+elif [ -z "$DBName" ];then
+	echo please enter the Name of the DB.
+
+elif [ ! -d $DBName ];then
+	mkdir $DBName
+	echo DB created succesfuly.
+elif [ -d $DBName ];then
+	echo this DB is already existed.
+
+
+fi
+
+cd ..
+cd scripts
+
+echo press enter to see the menu
+

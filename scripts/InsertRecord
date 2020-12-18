@@ -1,0 +1,5 @@
+#!/bin/bash
+#this is InsertRecord script to insert a recod in a table
+
+echo this is Insert Record script
+

@@ -1,0 +1,27 @@
+#!/bin/bash
+
+cd ..
+cd DBs
+num=$(ls *)
+flag=1
+count=0
+if [ -z "$num" ];then
+	echo no DataBases avilable.
+else
+	echo The DataBases are :
+	echo Table Name \|  Tables
+	echo ==============================
+	for i in $num
+	do
+		if [[ $i == *":" ]];then	
+			printf "\n%12s" $i
+		else
+			printf "%s|" $i
+	fi
+	done
+	echo
+	echo ==============================
+fi
+
+cd ..
+cd scripts

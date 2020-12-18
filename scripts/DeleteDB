@@ -1,0 +1,33 @@
+#!/bin/bash
+
+./ViewDB
+echo
+echo enter the name of the DataBase to Delete
+read DBName
+
+
+cd ..
+cd DBs
+
+
+if [[ -z "$DBName" ]];then
+	echo please enter the Name of the DataBase
+elif [[ $DBName == [1-9]* ]];then
+	echo can not start with a number
+
+elif [[ $DBName == *['!'@#\$%^\&*()_+]* ]];then
+	echo can not have a special caracters
+
+elif [[  $DBName = *" "* ]];then
+	echo Spaces not allowed.
+
+elif [ -d $DBName ];then
+	rm -r $DBName
+	echo DataBase Deleted successfuly.
+fi
+
+cd ..
+cd scripts
+
+echo press enter to see the menu
+

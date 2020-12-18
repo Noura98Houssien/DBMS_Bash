@@ -1,0 +1,29 @@
+#!/bin/bash
+
+
+DBName=$1
+./ListTables $DBName
+cd ..
+cd DBs/$DBName
+
+
+
+echo enter the name of the table to delete
+read TableName
+
+if [ -z "$TableName" ];then
+	echo please enter the Name of the Table.
+elif  [[ $TableName == *" "* ]] || [[ $TableName == [1-9]* ]] || [[ $TableName == *['!'@#\$%^\&*()_+]* ]] ;then
+	echo not a good format
+elif [ -f $TableName ];then
+	rm $TableName
+	rm .$TableName
+	echo deleted\!
+else
+	echo table not existed
+fi
+
+cd ..
+cd ..
+cd scripts
+echo press enter to see the menu.

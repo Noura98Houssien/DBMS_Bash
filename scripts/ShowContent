@@ -1,0 +1,26 @@
+#!/bin/bash
+
+DBName=$1
+TableName=$2
+
+cd ..
+cd DBs/$DBName/
+echo =================DataBase $DBName =================
+echo =================Table $TableName =================
+if [ -z "$TableName" ];then
+	echo please enter the Name of the Table.
+elif  [[ $TableName == *" "* ]] || [[ $TableName == [1-9]* ]] || [[ $TableName == *['!'@#\$%^\&*()_+]* ]] ;then
+	echo not a good format
+elif [ -f $TableName ];then
+	echo
+	awk -F: '{if(NR==1){i=1;while(i<=NF){if(i==1){printf $i}else{ printf ("|%15s" ,$i) };i++}printf "|"}}' .$TableName
+	echo
+	awk -F: '{i=1;while(i<=NF){if(i==1){printf $i}else{printf ("|%15s" ,$i)};i++};print "|"}' $TableName
+else
+	echo table not existed
+fi
+
+cd ..
+cd ..
+cd scripts
+echo press enter to see the menu.

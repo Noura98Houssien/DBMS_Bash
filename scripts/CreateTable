@@ -1,0 +1,71 @@
+#!/bin/bash
+#this is creating table script
+
+
+$DBName=$1
+cd ..
+cd DBs/$DBName
+
+found=0
+declare -a line1
+declare -a line2
+
+read -p "Enter the name of New Table:" TableName
+for name in `ls`
+do
+if [[ "$TableName" == "$name" ]]
+then
+found=1
+break
+fi
+done
+
+if (( $found == 0 ))
+then
+echo Enter the number of columns
+read ColNum
+line1[0]="ID"
+line2[0]="INTEGER"
+i=1
+while (( $i <= $ColNum ))
+do
+read -p "Enter the Column No.$i Name:" ColName
+line1[$i]=:$ColName
+read -p "Enter the Column No.$i Data Type:" DataType
+until [[ "$DataType" == "INTEGER" ]] ||[[ "$DataType" == "STRING" ]];
+do
+	echo Datetype not  INTEGER or STRING
+	read -p "Enter the Column No.$i Data Type:" DataType
+done
+line2[$i]=:$DataType
+	
+
+let i=$i+1
+
+done
+
+
+#create a file to save the data
+touch $TableName
+echo ${line1[@]}
+echo ${line2[@]}
+
+
+# create file to save meta data 
+echo  ${line1[@]} >> .$TableName
+echo  ${line2[@]} >> .$TableName
+
+
+echo Table $TableName Created Successfuly!
+
+else
+echo the $TableName table is already exist!
+
+fi
+
+cd ..
+cd ..
+cd scripts
+
+echo press enter to see the menu
+

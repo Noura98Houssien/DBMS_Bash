@@ -1,0 +1,16 @@
+#!/bin/bash
+
+select var in  "Create a new DataBase" "List DataBases"   "Delete a DataBase" "open DataBase" "Exit"
+do
+clear
+case $REPLY in
+1 ) ./CreateDB ;;
+2 ) ./ViewDB ;;
+3 ) ./DeleteDB ;;
+4 ) ./OpenDB ;; #go lvl2
+5 ) break;;
+*) echo $REPLY is not one of choises;;
+esac
+done
+
+exit

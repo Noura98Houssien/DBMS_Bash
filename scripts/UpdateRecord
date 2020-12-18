@@ -1,0 +1,4 @@
+#!/bin/bash
+#this is UpdateRecord script to update a cell in a record
+
+echo this is UpdateRecord script

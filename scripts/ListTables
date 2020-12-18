@@ -1,0 +1,31 @@
+#!/bin/bash
+
+DBName=$1
+cd ..
+cd DBs
+if [ -d $DBName ];then
+	echo the Tables are \:
+	cd $DBName
+	num=`ls`
+	for i in $num
+	do
+	echo $i
+	done
+	cd ..
+	cd ..
+	cd scripts
+elif [ -z "$DBName" ];then
+	echo please enter the Name of the Table.
+elif  [[ $DBName == *" "* ]] || [[ $DBName == [1-9]* ]] || [[ $DBName == *['!'@#\$%^\&*()_+]* ]] ;then
+	echo not a good format
+
+else
+	echo DataBase not existed
+	echo press enter to see the menu.
+	cd ..
+	cd scripts
+fi
+
+
+cd ..
+cd scripts
