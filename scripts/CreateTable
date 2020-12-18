@@ -10,19 +10,22 @@ found=0
 declare -a line1
 declare -a line2
 
-read -p "Enter the name of New Table:" TableName
 
-while [ -z "$TableName" ];do
-	echo please enter the Name of the Table.
-        read -p "Enter the name of New Table:" TableName
-done
-while  [[ $TableName == *" "* ]] || [[ $TableName == [1-9]* ]] || [[ $TableName == *['!'@#\$%^\&*()_+]* ]] ;do
+read -p "Enter the name of New Table:" TableName
+while [ true ]
+do
+if [ -z "$TableName" ];then
+        echo please enter the Name of the Table.
+        read -p "Enter the name of New Table again:" TableName
+elif [[ $TableName == *" "* ]] || [[ $TableName == [1-9]* ]] || [[ $TableName == *['!'@#\$%^\&*()_+]* ]] ;then
 	echo not a good format
-        read -p "Enter the name of New Table:" TableName
-done
-while [[ -f "$TableName" ]]; do
+        read -p "Enter the name of New Table agian:" TableName
+elif [[ -f "$TableName" ]]; then
   echo the Table Name already exist!
-  read -p "Enter the name of New Table:" TableName
+  read -p "Enter the name of New Table again:" TableName
+else
+ break
+fi
 done
 
 echo Enter the number of columns
@@ -30,27 +33,46 @@ read ColNum
 line1[0]="ID"
 line2[0]="INTEGER"
 i=1
+export equal
 while (( $i <= $ColNum ))
 do
 read -p "Enter the Column No.$i Name:" ColName
-while [ -z "$ColName" ];do
-	echo please enter the Name of the Column.
-        read -p "Enter the Column No.$i Name:" ColName
-done
-while  [[ $ColName == *" "* ]] || [[ $ColName == [1-9]* ]] || [[ $ColName == *['!'@#\$%^\&*()_+]* ]] ;do
 
-
-	echo not a good format
-        read -p "Enter the Column No.$i Name:" ColName
-done
-for col in ${line1[@]}
+while [ true ]
 do
-	
-while [[ "$col" == "$ColName" ]]; do
-    echo the column name already exist!
-    read -p "Enter the Column No.$i Name:" ColName
+if [ -z "$ColName" ];then
+        echo please enter the Name of the column.
+        read -p "Enter the Column No.$i Name again:" ColName
+
+elif [[ $ColName == *" "* ]] || [[ $ColName == [1-9]* ]] || [[ $ColName == *['!'@#\$%^\&*()_+]* ]] ;then
+	echo not a good format
+        read -p "Enter the Column No.$i Name again:" ColName
+
+else
+
+  for col in ${line1[@]}
+  do
+  	
+    if [[ "$col" == "$ColName" ]]; then
+        equal=1
+        echo the column name already exist!
+        read -p "Enter the Column No.$i Name again:" ColName
+        break 
+    else
+    equal=0
+  
+    fi 
+  done
+
+  if [[ $equal == 0 ]];then
+  break
+  fi
+
+fi
+
 done
-done
+
+
 
 line1[$i]=$ColName
 
@@ -99,7 +121,7 @@ done
 
 echo  $l2 >> .$TableName
 
-
+touch $TableName
 echo Table $TableName Created Successfuly!
 
 
