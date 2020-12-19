@@ -1,3 +1,2 @@
 Id:Name:Age:Address:FatherName
-i:s:i:s:s
-1:
+INTEGER:STRING:INTEGER:STRING:STRING
