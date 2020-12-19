@@ -7,9 +7,6 @@ cd DBs/$DBName
 
 
 found=0
-declare -a line1
-declare -a line2
-TableName=""
 
 while [ true ]
 do
