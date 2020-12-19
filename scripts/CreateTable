@@ -7,14 +7,8 @@ cd DBs/$DBName
 
 
 found=0
-declare -a line1
-declare -a line2
-<<<<<<< HEAD
-
-=======
-echo $DBName
-read -p "Enter the name of New Table:" TableName
->>>>>>> 82766fd2ac04cde7e29b23ff335cc71f9e6b850d
+declare -a line1 
+declare -a line2 
 
 read -p "Enter the name of New Table:" TableName
 while [ true ]
