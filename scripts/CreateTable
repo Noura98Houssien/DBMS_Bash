@@ -7,24 +7,20 @@ cd DBs/$DBName
 
 
 found=0
-declare -a line1 
-declare -a line2 
 
-read -p "Enter the name of New Table:" TableName
 while [ true ]
 do
-if [ -z "$TableName" ];then
-        echo please enter the Name of the Table.
-        read -p "Enter the name of New Table again:" TableName
-elif [[ $TableName == *" "* ]] || [[ $TableName == [1-9]* ]] || [[ $TableName == *['!'@#\$%^\&*()_+]* ]] ;then
-	echo not a good format
-        read -p "Enter the name of New Table agian:" TableName
-elif [[ -f "$TableName" ]]; then
-  echo the Table Name already exist!
-  read -p "Enter the name of New Table again:" TableName
-else
- break
-fi
+	printf "Enter the name of New Table: " 
+	read TableName
+	if [ -z "$TableName" ];then
+		echo please enter the Name of the Table.
+	elif [[ $TableName == *" "* ]] || [[ $TableName == [1-9]* ]] || [[ $TableName == *['!'@#\$%^\&*()_+]* ]] ;then
+		echo not a good format
+	elif [[ -f "$TableName" ]]; then
+	  echo the Table Name already exist!
+	else
+	 break
+	fi
 done
 
 echo Enter the number of columns
@@ -35,39 +31,39 @@ i=1
 export equal
 while (( $i <= $ColNum ))
 do
-read -p "Enter the Column No.$i Name:" ColName
+	read -p "Enter the Column No.$i Name:" ColName
 
-while [ true ]
-do
-if [ -z "$ColName" ];then
-        echo please enter the Name of the column.
-        read -p "Enter the Column No.$i Name again:" ColName
+	while [ true ]
+		do
+		if [ -z "$ColName" ];then
+			echo please enter the Name of the column.
+			read -p "Enter the Column No.$i Name again:" ColName
 
-elif [[ $ColName == *" "* ]] || [[ $ColName == [1-9]* ]] || [[ $ColName == *['!'@#\$%^\&*()_+]* ]] ;then
-	echo not a good format
-        read -p "Enter the Column No.$i Name again:" ColName
+		elif [[ $ColName == *" "* ]] || [[ $ColName == [1-9]* ]] || [[ $ColName == *['!'@#\$%^\&*()_+]* ]] ;then
+			echo not a good format
+			read -p "Enter the Column No.$i Name again:" ColName
 
-else
+		else
 
-  for col in ${line1[@]}
-  do
-  	
-    if [[ "$col" == "$ColName" ]]; then
-        equal=1
-        echo the column name already exist!
-        read -p "Enter the Column No.$i Name again:" ColName
-        break 
-    else
-    equal=0
-  
-    fi 
-  done
+	  for col in ${line1[@]}
+		  do
+		  	
+		    if [[ "$col" == "$ColName" ]]; then
+			equal=1
+			echo the column name already exist!
+			read -p "Enter the Column No.$i Name again:" ColName
+			break 
+		    else
+		    equal=0
+		  
+		    fi 
+		  done
 
-  if [[ $equal == 0 ]];then
-  break
-  fi
+	  if [[ $equal == 0 ]];then
+		  break
+	  fi
 
-fi
+	fi
 
 done
 
