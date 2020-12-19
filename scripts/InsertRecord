@@ -1,5 +1,66 @@
 #!/bin/bash
-#this is InsertRecord script to insert a recod in a table
 
-echo this is Insert Record script
+DBName=$1
+TableName=$2
 
+cd ..
+cd DBs/$DBName/
+
+ColName=`awk -F: '{if(NR==1){i=2;while(i<=NF){if(i==1){printf $i " "}else{ printf ("%s " ,$i) };i++}} } END {print ""}' .$TableName`
+ColType=( $( awk -F: '{if(NR==2){i=1;while(i<=NF){if(i==1){printf $i " "}else{ printf ("%s " ,$i) };i++}} } END {print ""}' .$TableName ) )
+fields=( $( awk -F: '{}END{print NF}' .$TableName ) )
+num=( $( awk -F: 'BEGIN{Max=0}{if($1>Max){Max=$1}}END{print Max}' $TableName ) )
+((num++))
+((fields--))
+i=1
+for Name in $ColName
+do	
+	while [ true ];
+	do
+		printf "Enter %s and it's a %s : \n" $Name ${ColType[$i]}
+		read Data
+		if [[ $Data == *" "* ]] || [[ $Data == *['!'@#\$%^\&*()+]* ]] ;then
+			echo Data is not \in a good format			
+		elif  [ -z  $Data ];then
+			echo please enter the Data
+		else
+			if [[ ${ColType[$i]} == "INTEGER" ]];then
+				if [[ $Data == *[0-9] ]];then
+					if [ $i -eq 1 ];then
+						printf $num":">> $TableName						
+					fi
+					if [ $i -eq $fields ];then
+						printf $Data>> $TableName
+					else
+						printf $Data":">> $TableName
+					fi
+					echo Data Enterd\!
+					break
+				else
+					echo "this is not an INTEGER"
+				fi
+			elif [[ ${ColType[$i]} == "STRING" ]];then
+				if [[ $Data == *([A-Z-a-z-_]) ]];then
+					if [ $i -eq 1 ];then
+					printf $num":">> $TableName						
+					fi
+					if [ $i -eq $fields ];then
+						printf $Data>> $TableName
+					else
+						printf $Data":">> $TableName
+					fi
+					echo Data enterd\!
+					break
+				else
+					echo "this is not a STRING"
+				fi
+			fi
+		fi
+	done
+	((i++))
+done
+printf "\n">> $TableName
+cd ..
+cd ..
+cd scripts
+echo press enter to see the menu.

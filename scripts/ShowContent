@@ -9,9 +9,10 @@ cd DBs/$DBName/
 	echo =================DataBase $DBName =================
 	echo =================Table $TableName =================
 	echo
-	awk -F: '{if(NR==1){i=1;while(i<=NF){if(i==1){printf $i}else{ printf ("|%15s" ,$i) };i++}printf "|"}}' .$TableName
+	awk -F: '{if(NR==1){i=1;while(i<=NF){if(i==1){printf "|"$i}else{ printf ("|%16s" ,$i) };i++}printf "|"}}' .$TableName
+	echo 
 	echo
-	awk -F: '{i=1;while(i<=NF){if(i==1){printf $i}else{printf ("|%15s" ,$i)};i++};print "|"}' $TableName
+	awk -F: '{i=1;while(i<=NF){if(i==1){printf "|"$i}else{printf ("|%16s" ,$i)};i++};print "|"}' $TableName
 
 cd ..
 cd ..
