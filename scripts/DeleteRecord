@@ -1,6 +1,27 @@
 #!/bin/bash
 #this is DeleteRecord script to delete a record from a table
+DBName=$1
+TableName=$2
+cd ..
+cd DBs/$DBName/
 
-echo this is Delete Record script
+table_content_b=`cat $TableName`
+
+read -p "Enter the pk of Record to be deleted:" pk
+
+awk -F: "{ if ( \$1 != \"$pk\" ) print \$0 }" $TableName > temp && mv temp $TableName 
+
+table_content_a=`cat $TableName`
+
+if  [[ $table_content_b != $table_content_a ]];
+then 
+echo the record deleted successfully
+else
+echo this record cannot found
+fi
+
+cd ..
+cd ..
+cd scripts
 
 
