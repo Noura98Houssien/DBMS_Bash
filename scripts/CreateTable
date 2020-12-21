@@ -25,6 +25,7 @@ done
 
 echo Enter the number of columns
 read ColNum
+if [[ $TableName == [1-9]* ]];then
 line1[0]="ID"
 line2[0]="INTEGER"
 i=1
@@ -66,7 +67,9 @@ do
 	fi
 
 done
-
+else
+	echo not valid Data entry
+fi
 
 
 line1[$i]=$ColName
