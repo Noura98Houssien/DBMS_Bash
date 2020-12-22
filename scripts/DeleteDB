@@ -15,7 +15,7 @@ if [[ -z "$DBName" ]];then
 elif [[ $DBName == [1-9]* ]];then
 	echo can not start with a number
 
-elif [[ $DBName == *['!'@#\$%^\&*()_+]* ]];then
+elif [[ $DBName == *['!'@#\$%^\&*()+]* ]];then
 	echo can not have a special caracters
 
 elif [[  $DBName = *" "* ]];then
@@ -24,6 +24,8 @@ elif [[  $DBName = *" "* ]];then
 elif [ -d $DBName ];then
 	rm -r $DBName
 	echo DataBase Deleted successfuly.
+else
+	echo DataBase not existed
 fi
 
 cd ..

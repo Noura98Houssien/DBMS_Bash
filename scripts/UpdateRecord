@@ -1,4 +1,86 @@
 #!/bin/bash
-#this is UpdateRecord script to update a cell in a record
 
-echo this is UpdateRecord script
+DBName=$1
+TableName=$2
+
+cd ..
+cd DBs/$DBName/
+echo
+ColName=`awk -F: '{if(NR==1){i=2;while(i<=NF){if(i==1){printf $i " "}else{ printf ("%s " ,$i) };i++}} } END {print ""}' .$TableName`
+num=`awk -F: '{printf $1 " "}' $TableName`
+printf "Enter the PK of the Record to Update : "
+read PK
+
+flag=0
+typenum=1
+j=2
+if [[ -z "$PK" ]];then
+	echo Please Enter the PK
+elif [[ "${num[@]}" =~ "${PK}" ]];then
+	echo
+	echo Columns are : $ColName
+	echo
+	printf "Enter the name of the Column to Update : "
+	read Col
+
+	if [[ -z "$Col" ]];then
+		echo please enter the Column Name
+	elif [[  "${ColName[@]}" =~ "${Col}"   ]];then
+		for i in $ColName
+		do
+			if [[ $i == $Col ]];then
+				flag=1
+				typenum=$j
+			fi
+			((j++))
+		done
+		if [ $flag -eq 1 ];then
+			UpdatedData=`awk -F: '{if($1=='$PK'){printf $0}}' $TableName > temp`
+			#sed -i 's/rabie/ahemd/p'
+			Type=`awk -F: '{if(NR==2){print $'$typenum' }}' .$TableName`
+			oldValue=`awk -F: '{if($1=='$PK'){print $'$typenum'}}' $TableName`
+			echo Old Value is \: $oldValue
+			printf "Enter the New Value : " 
+			read Data  #Data =>new   Type => type of column  Col=>column Name   PK=>ID   typenum=>column number
+			if [[ -z "$Data" ]];then
+				echo please enter the Data
+				
+			elif [[ $Type == "INTEGER" ]];then
+				if [[ $Data == *[0-9] ]];then
+					
+			awk -i inplace -F: 'BEGIN{OFS=FS} {if($1=='$PK'){gsub('$oldValue','$Data',$'$typenum');print $0}else{print $0}}' $TableName 
+					echo Data Updated\!
+				else
+					echo "this is not an INTEGER"
+				fi
+			elif [[ $Type == "STRING" ]];then
+				if [[ $Data == *([A-Z-a-z-_]) ]];then
+			awk -i inplace -F: 'BEGIN{OFS=FS} {if($1=='$PK'){gsub(/'$oldValue'/,"'$Data'",$'$typenum');print $0}else{print $0}}' $TableName  
+					echo Data enterd\!
+				else
+					echo "this is not a STRING"
+				fi
+			fi	
+		else 
+			echo not valid Record Name
+		fi
+	else
+		echo not valid Record Name		
+	fi
+else
+	echo Not Valid input or not a Record
+fi
+
+
+
+
+
+ColType=( $( awk -F: '{if(NR==2){i=1;while(i<=NF){if(i==1){printf $i " "}else{ printf ("%s " ,$i) };i++}} } END {print ""}' .$TableName ) )
+fields=( $( awk -F: '{}END{print NF}' .$TableName ) )
+
+
+
+cd ..
+cd ..
+cd scripts
+echo press enter to see the menu.
