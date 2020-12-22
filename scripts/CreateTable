@@ -14,7 +14,7 @@ do
 	read TableName
 	if [ -z "$TableName" ];then
 		echo please enter the Name of the Table.
-	elif [[ $TableName == *" "* ]] || [[ $TableName == [1-9]* ]] || [[ $TableName == *['!'@#\$%^\&*()_+]* ]] ;then
+	elif [[ $TableName == *" "* ]] || [[ $TableName == [1-9]* ]] || [[ $TableName == *['!'';''.'@#\$%^\&*()+]* ]] ;then
 		echo not a good format
 	elif [[ -f "$TableName" ]]; then
 	  echo the Table Name already exist!
@@ -23,26 +23,49 @@ do
 	fi
 done
 
-echo Enter the number of columns
-read ColNum
-if [[ $TableName == [1-9]* ]];then
+while [ true ]
+do
+read -p "Enter the number of columns:" ColNum
+
+if ! [[ "$ColNum" =~ ^[0-9]+$ ]];
+then
+echo Column number must be integer 
+elif [[ $ColNum -eq 0 ]]
+then 
+echo Enter at least 1 column 
+else
+break
+fi
+done
+
+
+
+
+
 line1[0]="ID"
 line2[0]="INTEGER"
 i=1
 export equal
+
+
+
+
+
+
 while (( $i <= $ColNum ))
 do
-	read -p "Enter the Column No.$i Name:" ColName
+
 
 	while [ true ]
 		do
+                read -p "Enter the Column No.$i Name:" ColName
 		if [ -z "$ColName" ];then
 			echo please enter the Name of the column.
-			read -p "Enter the Column No.$i Name again:" ColName
 
-		elif [[ $ColName == *" "* ]] || [[ $ColName == [1-9]* ]] || [[ $ColName == *['!'@#\$%^\&*()_+]* ]] ;then
+
+		elif [[ $ColName == *" "* ]] || [[ $ColName == [1-9]* ]] || [[ $ColName == *['!'';''.'@#\$%^\&*()+]* ]] ;then
 			echo not a good format
-			read -p "Enter the Column No.$i Name again:" ColName
+
 
 		else
 
@@ -52,7 +75,7 @@ do
 		    if [[ "$col" == "$ColName" ]]; then
 			equal=1
 			echo the column name already exist!
-			read -p "Enter the Column No.$i Name again:" ColName
+
 			break 
 		    else
 		    equal=0
@@ -67,9 +90,7 @@ do
 	fi
 
 done
-else
-	echo not valid Data entry
-fi
+
 
 
 line1[$i]=$ColName
@@ -128,7 +149,6 @@ cd ..
 cd scripts
 
 echo press enter to see the menu
-
 
 
 

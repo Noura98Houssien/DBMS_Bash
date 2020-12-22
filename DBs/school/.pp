@@ -1,2 +1,0 @@
-ID:name:age
-INTEGER:STRING:INTEGER
