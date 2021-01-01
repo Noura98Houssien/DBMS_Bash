@@ -1,10 +1,15 @@
 #!/bin/bash
 
+
+if [ ! -z "$1" ];then
+DBName=$1
+
+else
 ./ViewDB
 echo
 echo enter the name of the DataBase to Delete
 read DBName
-
+fi
 
 cd ..
 cd DBs

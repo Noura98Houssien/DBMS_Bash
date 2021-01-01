@@ -1,0 +1,37 @@
+#!/bin/bash
+#this is Query Level one script Bonus
+
+IFS=' '
+
+read -p "Enter your Query:" str
+
+while [ "${str: -1}" != ";" ]
+do
+printf "query must end with ;" 
+read 
+str+="$REPLY"
+done
+
+read -d';' -ra query<<<"$str"
+len=${#query[@]}
+if [[ "${query[0]}" == "createdb" && $len == 2 ]]
+then
+      ./CreateDB "${query[1]}"	
+elif [[ "${query[0]}" == "opendb" && $len == 2 ]]
+then
+     ./OpenDB "${query[1]}" 
+elif [[ "${query[0]}" == "dropdb" && $len == 2 ]]
+then 
+     ./DeleteDB "${query[1]}"
+elif [[ "${query[0]}" == "showdbs" && $len == 1 ]]
+then
+     ./ViewDB
+
+else
+	echo Sentax error!
+fi
+
+
+
+ 
+

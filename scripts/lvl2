@@ -2,6 +2,7 @@
 
 
 DBName=$1
+echo =====================the $DBName database is opend ==========================
 select var in  "Create Table"  "Delete Table"  "List Tables" "Show Table Structure"  "Open Table"  "Back"
 do
 clear
@@ -9,11 +10,13 @@ clear
 case $REPLY in
 
 1 )  ./CreateTable $DBName;;
-2 ) source ./DeleteTable $DBName ;;
-3 ) source ./ListTables $DBName ;;
-4 ) source ./TableStructure $DBName ;;
-5 ) source ./OpenTable $DBName ;; #go lvl3
+2 )  ./DeleteTable $DBName ;;
+3 )  ./ListTables $DBName ;;
+4 )  ./TableStructure $DBName ;;
+5 )  ./OpenTable $DBName ;; #go lvl3
 6 ) break ;;
 *) echo $REPLY is not one of choises;;
 esac
 done
+
+

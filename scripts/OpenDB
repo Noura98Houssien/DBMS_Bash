@@ -1,8 +1,14 @@
 #!/bin/bash
-export DBName
+
+
+if [ ! -z "$1" ];then
+DBName=$1
+else
 ./ViewDB
 echo enter DataBase name to Enter
 read DBName
+fi
+
 cd ..
 cd DBs
 
@@ -14,14 +20,14 @@ elif [ -d $DBName ];then
 
 	cd ..
 	cd scripts
-source ./lvl2 $DBName
+     ./lvl2 $DBName
 else
 	echo DataBase not existed
-	echo press enter to see the menu.
-	cd ..
+        cd ..
 	cd scripts
+	
 fi
 
+echo press enter to see the menu
 
-cd ..
-cd scripts
+

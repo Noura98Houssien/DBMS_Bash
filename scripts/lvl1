@@ -1,6 +1,10 @@
 #!/bin/bash
 
-select var in  "Create a new DataBase" "List DataBases"   "Delete a DataBase" "open DataBase" "Exit"
+echo
+echo Welcome Back '^_^'
+echo
+
+select var in  "Create a new DataBase" "List DataBases"   "Delete a DataBase" "open DataBase" "Write Query" "Exit"
 do
 clear
 case $REPLY in
@@ -8,9 +12,10 @@ case $REPLY in
 2 ) ./ViewDB ;;
 3 ) ./DeleteDB ;;
 4 ) ./OpenDB ;; #go lvl2
-5 ) break;;
+5 ) ./QueryLevel1 ;;
+6 ) break;;
 *) echo $REPLY is not one of choises;;
 esac
 done
-
-exit
+echo GoodBye ':)'
+#exit

@@ -1,7 +1,12 @@
 #!/bin/bash
+if [ ! -z "$1" ];then
+DBName=$1
 
+else
 echo enter the name of the DB
 read DBName
+fi
+
 cd ..
 cd DBs
 
@@ -24,6 +29,7 @@ elif [ -d $DBName ];then
 
 
 fi
+
 
 cd ..
 cd scripts
