@@ -14,7 +14,7 @@ do
 	read TableName
 	if [ -z "$TableName" ];then
 		echo please enter the Name of the Table.
-	elif [[ $TableName == *" "* ]] || [[ $TableName == [1-9]* ]] || [[ $TableName == *['!'';''.'@#\$%^\&*()+]* ]] ;then
+	elif [[ $TableName == *" "* ]] || [[ $TableName == [1-9]* ]] || [[ $TableName == *['!'';''.'@#\$%^\&*()+-='\'?'/''`'~:,'<''>''['']']* ]] ;then
 		echo not a good format
 	elif [[ -f "$TableName" ]]; then
 	  echo the Table Name already exist!
@@ -29,7 +29,7 @@ read -p "Enter the number of columns:" ColNum
 
 if ! [[ "$ColNum" =~ ^[0-9]+$ ]];
 then
-echo Column number must be integer 
+echo Column number must be positive integer number 
 elif [[ $ColNum -eq 0 ]]
 then 
 echo Enter at least 1 column 
@@ -40,17 +40,10 @@ done
 
 
 
-
-
 line1[0]="ID"
 line2[0]="INTEGER"
 i=1
 export equal
-
-
-
-
-
 
 while (( $i <= $ColNum ))
 do
@@ -63,7 +56,7 @@ do
 			echo please enter the Name of the column.
 
 
-		elif [[ $ColName == *" "* ]] || [[ $ColName == [1-9]* ]] || [[ $ColName == *['!'';''.'@#\$%^\&*()+]* ]] ;then
+		elif [[ $ColName == *" "* ]] || [[ $ColName == [1-9]* ]] || [[ $ColName == *['!'';''.'@#\$%^\&*()+-='\'?'/''`'~:,'<''>''['']']* ]] ;then
 			echo not a good format
 
 
@@ -95,11 +88,13 @@ done
 
 line1[$i]=$ColName
 
-read -p "Choose data type for Column No.$i  (1)for INTEGER (2)for STRING:" choise
+        read -p "Choose data type for Column No.$i  (1)for INTEGER (2)for STRING:" choise
 until [[ $choise == 1 ]] ||[[ $choise == 2 ]]
 do
+
 	echo Datetype must be  INTEGER or STRING
         read -p "Choose data type for Column No.$i  (1)for INTEGER (2)for STRING:" choise
+
 done
 if [[ $choise == 1 ]]
 then
@@ -113,6 +108,7 @@ let i=$i+1
 
 done
 
+#to create table file and metadata file   
 i=0
 for var in  ${line1[@]}
 do
