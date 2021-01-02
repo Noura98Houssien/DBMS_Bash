@@ -1,2 +1,0 @@
-ID:ee
-INTEGER:INTEGER

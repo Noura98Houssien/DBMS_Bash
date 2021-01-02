@@ -35,7 +35,7 @@ elif [[ "${num[@]}" =~ "${PK}" ]];then
 			((j++))
 		done
 		if [ $flag -eq 1 ];then
-			UpdatedData=`awk -F: '{if($1=='$PK'){printf $0}}' $TableName > temp`
+			#UpdatedData=`awk -F: '{if($1=='$PK'){printf $0}}' $TableName > temp`
 			#sed -i 's/rabie/ahemd/p'
 			Type=`awk -F: '{if(NR==2){print $'$typenum' }}' .$TableName`
 			oldValue=`awk -F: '{if($1=='$PK'){print $'$typenum'}}' $TableName`
