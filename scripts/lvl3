@@ -1,7 +1,7 @@
 #!/bin/bash
 #this is layer3.sh script to show menu for layer3
 
-select choise in "Show Content" "Insert Record" "Delete Record" "Update Record" "Search (Bonus)" "<-Back"
+select choise in "Show Content" "Insert Record" "Delete Record" "Update Record" "<-Back"
 do	
 	case $REPLY in
 		1 ) 
@@ -16,7 +16,7 @@ do
 		4 )
 			./UpdateRecord $1 $2;
 			;;
-		6 )     break;; #go lvl2
+		5 )     break;; #go lvl2
 		* )
 			echo $REPLY is not one of choises;;
 	esac
