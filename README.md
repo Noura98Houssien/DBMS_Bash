@@ -1,5 +1,7 @@
 # Bash Script Project [ITI]
 This project is Mini DBMS using Bash Script, consists of three levels each level has some scripts to apply some functionality
+![DB](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngkit.com%2Fbigpic%2Fu2w7r5t4a9w7r5t4%2F&psig=AOvVaw2MhmrpN9i_xcJaWyyQg-u3&ust=1609708130118000&source=images&cd=vfe&ved=2ahUKEwj9ncmblP7tAhVYwIUKHfwjBAkQr4kDegQIARB-)
+![Bash](https://www.google.com/url?sa=i&url=https%3A%2F%2Fdevdojo.com%2Fbobbyiliev%2Fexecuting-bash-script-on-multiple-remote-server&psig=AOvVaw1TzGFKEHwJqXeORjdHRZkE&ust=1609708352820000&source=images&cd=vfe&ved=2ahUKEwjK5-GFlf7tAhXa0YUKHak1BbkQr4kDegUIARDGAQ)
 ### Level#1   [called DB level]
 - user able to create a new database
 - user able to open a specific database
