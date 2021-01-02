@@ -1,7 +1,13 @@
 # Bash Script Project [ITI]
 This project is Mini DBMS using Bash Script, consists of three levels each level has some scripts to apply some functionality
-![DB](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngkit.com%2Fbigpic%2Fu2w7r5t4a9w7r5t4%2F&psig=AOvVaw2MhmrpN9i_xcJaWyyQg-u3&ust=1609708130118000&source=images&cd=vfe&ved=2ahUKEwj9ncmblP7tAhVYwIUKHfwjBAkQr4kDegQIARB-)
-![Bash](https://www.google.com/url?sa=i&url=https%3A%2F%2Fdevdojo.com%2Fbobbyiliev%2Fexecuting-bash-script-on-multiple-remote-server&psig=AOvVaw1TzGFKEHwJqXeORjdHRZkE&ust=1609708352820000&source=images&cd=vfe&ved=2ahUKEwjK5-GFlf7tAhXa0YUKHak1BbkQr4kDegUIARDGAQ)
+
+<table> 
+  <tr>
+    <td><img src="https://lh3.googleusercontent.com/proxy/2vJmCODLLjnMqQpcoOXxyc5uam1DWLhXU-4sLnqqmzBuR9q4ikBFqpafU1tJB7a4tmtK5iP0vBxNUyPQJz63BE2rBjg89wvp7DU55CY" width=350        height=350></td>
+    <td><img src="https://cdn.devdojo.com/posts/images/June2019/executing-bash-script-on-multiple-remote-server.jpg?w=1280&h=720&fit=crop" width=350 height=350></td>
+  </tr>
+ </table>
+ 
 ### Level#1   [called DB level]
 - user able to create a new database
 - user able to open a specific database
