@@ -35,17 +35,20 @@ This project is Mini DBMS using Bash Script, consists of three levels each level
 - user able to create a new  table inside DB which chosen at level#1
 - user able to delete a specific table from  DB which chosen at level#1
 - user able to list all tables inside DB which chosen at level#1
+- user able to show structure of a table from DB which chosen at level#1
 - user able to open a specific table from DB which chosen at level#1
 
 ### Level#3   [called record level]
 - user able to insert a new record inside a table which chosen at level#2
 - user able to delete a record from a table which chosen at level#2
 - user able to update a specific record inside a table which chosen at level#2
+- user able to show content of specific table which chosen at level#2
 
 ### Notes
 - Data Type either INT or STRING only
 - Each table has a PK column called "ID" which is predefined with INT data type and auto increment
 - Database name or column name shouldn't contain any special characters or start with number
+- we use gsub function inside UpdateRecord script and doesn't work with all version of git.we use git with version 2.27.0 
 - Project consists of two directory one for operation called "scripts" and the second for Database storage called "DBs" 
 
 # installation
