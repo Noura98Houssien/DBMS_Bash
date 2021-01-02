@@ -7,13 +7,13 @@ This project is Mini DBMS using Bash Script, consists of three levels each level
 - user able to delete a specific database
 - user able to write a query to done the above functions (Bonus)
 ```git
-    - to create a new DB:
+<b>to create a new DB<\b>
       $ createdb database_name;   OR    $ CREATEDB database_name;
-    - to delete DB:
+- to delete DB:
       $ dropdb database_name;     OR    $ DROPDB database_name;
-    - to open DB:
+- to open DB:
       $ opendb database_name;     OR    $ OPENDB database_name;
-    - to view all DB:'
+- to view all DB:
       $ showdbs;                  OR    $ SHOWDBS;
 ```
 ### Level#2   [called table level]
