@@ -50,6 +50,8 @@ This project is Mini DBMS using Bash Script, consists of three levels each level
 - Database name or column name shouldn't contain any special characters or start with number
 - we use gsub function inside UpdateRecord script and doesn't work with all version of git.we use git with version 2.27.0 
 - Project consists of two directory one for operation called "scripts" and the second for Database storage called "DBs" 
+- when create new table there are two files created in DBs directory one to save the data ex: TableName and another hidden file       to save the metadata ex:.TableName
+- each row in the file represent record ,and columns separated by ":"
 
 # installation
 clone this repo in your directory then change dir to scripts 
