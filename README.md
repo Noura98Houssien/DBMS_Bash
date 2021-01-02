@@ -6,11 +6,15 @@ This project is Mini DBMS using Bash Script, consists of three levels each level
 - user able to view all databases
 - user able to delete a specific database
 - user able to write a query to done the above functions (Bonus)
-```bash
-    - to create a new DB : createdb database_name;   OR    CREATEDB database_name;
-    - to delete DB       : dropdb database_name;     OR    DROPDB database_name;
-    - to open DB         : opendb database_name;     OR    OPENDB database_name;
-    - to view all DB     : showdbs;                  OR    SHOWDBS;
+```git
+    - to create a new DB:
+      $ createdb database_name;   OR    $ CREATEDB database_name;
+    - to delete DB:
+      $ dropdb database_name;     OR    $ DROPDB database_name;
+    - to open DB:
+      $ opendb database_name;     OR    $ OPENDB database_name;
+    - to view all DB:'
+      $ showdbs;                  OR    $ SHOWDBS;
 ```
 ### Level#2   [called table level]
 - user able to create a new  table inside DB which chosen at level#1
@@ -26,7 +30,7 @@ This project is Mini DBMS using Bash Script, consists of three levels each level
 ### Notes
 - Data Type either INT or STRING only
 - Each table has a PK and it is auto increment
-- Project consists of two directory one for operation called "scripts" and the second for Database storage called "DB" 
+- Project consists of two directory one for operation called "scripts" and the second for Database storage called "DBs" 
 
 # installation
 clone this repo in your directory then change dir to scripts 
