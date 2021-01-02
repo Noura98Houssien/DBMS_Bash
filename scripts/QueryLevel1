@@ -23,7 +23,7 @@ then
 elif [[ "${query[0]}" == "dropdb" && $len == 2 ]] || [[ "${query[0]}" == "DROPDB" && $len == 2 ]]
 then 
      ./DeleteDB "${query[1]}"
-elif [[ "${query[0]}" == "showdbs" && $len == 1 ]] || [[ "${query[0]}" == "SHOWDBS" && $len == 2 ]]
+elif [[ "${query[0]}" == "showdbs" && $len == 1 ]] || [[ "${query[0]}" == "SHOWDBS" && $len == 1 ]]
 then
      ./ViewDB
 
