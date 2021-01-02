@@ -14,21 +14,21 @@ done
 
 read -d';' -ra query<<<"$str"
 len=${#query[@]}
-if [[ "${query[0]}" == "createdb" && $len == 2 ]]
+if [[ "${query[0]}" == "createdb" && $len == 2 ]] || [[ "${query[0]}" == "CREATEDB" && $len == 2 ]]
 then
       ./CreateDB "${query[1]}"	
-elif [[ "${query[0]}" == "opendb" && $len == 2 ]]
+elif [[ "${query[0]}" == "opendb" && $len == 2 ]] || [[ "${query[0]}" == "OPENDB" && $len == 2 ]]
 then
      ./OpenDB "${query[1]}" 
-elif [[ "${query[0]}" == "dropdb" && $len == 2 ]]
+elif [[ "${query[0]}" == "dropdb" && $len == 2 ]] || [[ "${query[0]}" == "DROPDB" && $len == 2 ]]
 then 
      ./DeleteDB "${query[1]}"
-elif [[ "${query[0]}" == "showdbs" && $len == 1 ]]
+elif [[ "${query[0]}" == "showdbs" && $len == 1 ]] || [[ "${query[0]}" == "SHOWDBS" && $len == 2 ]]
 then
      ./ViewDB
 
 else
-	echo Sentax error!
+	echo Syntax error!
 fi
 
 
