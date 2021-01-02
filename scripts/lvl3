@@ -16,9 +16,6 @@ do
 		4 )
 			./UpdateRecord $1 $2;
 			;;
-		5 ) 
-			./Search $1 $2;
-			;;
 		6 )     break;; #go lvl2
 		* )
 			echo $REPLY is not one of choises;;
