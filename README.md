@@ -17,7 +17,7 @@ This project is Mini DBMS using Bash Script, consists of three levels each level
 
    - **to create a new DB**
     ```git
-           $ createdb database_name;   OR    $ CREATEDB database_name;
+          $ createdb database_name;   OR    $ CREATEDB database_name;
     ```
    - **to delete DB**
     ```git
@@ -45,6 +45,7 @@ This project is Mini DBMS using Bash Script, consists of three levels each level
 ### Notes
 - Data Type either INT or STRING only
 - Each table has a PK and it is auto increment
+- Database name or column name shouldn't contain any special characters or start with number
 - Project consists of two directory one for operation called "scripts" and the second for Database storage called "DBs" 
 
 # installation
