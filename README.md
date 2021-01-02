@@ -44,7 +44,7 @@ This project is Mini DBMS using Bash Script, consists of three levels each level
 
 ### Notes
 - Data Type either INT or STRING only
-- Each table has a PK and it is auto increment
+- Each table has a PK column called "ID" which is predefined with INT data type and auto increment
 - Database name or column name shouldn't contain any special characters or start with number
 - Project consists of two directory one for operation called "scripts" and the second for Database storage called "DBs" 
 
