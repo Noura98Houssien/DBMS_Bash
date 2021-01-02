@@ -28,6 +28,13 @@ This project is Mini DBMS using Bash Script, consists of three levels each level
 - Each table has a PK and it is auto increment
 
 # installation
-clone this repo in your directory
-``` 
-$ git clone 
+clone this repo in your directory then change dir to scripts 
+``` git
+$ git clone https://github.com/mohabrabie/DBMS_Bash.git
+$ cd scripts
+```
+to start the program run  level#1 script called lvl1
+```git
+$ ./lvl1
+```
+
