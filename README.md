@@ -26,6 +26,7 @@ This project is Mini DBMS using Bash Script, consists of three levels each level
 ### Notes
 - Data Type either INT or STRING only
 - Each table has a PK and it is auto increment
+- Project consists of two directory one for operation called "scripts" and the second for Database storage called "DB" 
 
 # installation
 clone this repo in your directory then change dir to scripts 
