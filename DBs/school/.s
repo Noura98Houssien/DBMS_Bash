@@ -1,2 +1,0 @@
-ID:sa
-INTEGER:INTEGER
