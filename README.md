@@ -3,8 +3,8 @@ This project is Mini DBMS using Bash Script, consists of three levels each level
 
 <table> 
   <tr>
-    <td><img src="https://lh3.googleusercontent.com/proxy/2vJmCODLLjnMqQpcoOXxyc5uam1DWLhXU-4sLnqqmzBuR9q4ikBFqpafU1tJB7a4tmtK5iP0vBxNUyPQJz63BE2rBjg89wvp7DU55CY" width=350        height=350></td>
-    <td><img src="https://cdn.devdojo.com/posts/images/June2019/executing-bash-script-on-multiple-remote-server.jpg?w=1280&h=720&fit=crop" width=350 height=350></td>
+    <td><img src="db.png" width=350   height=350></td>
+    <td><img src="bash.jpg" width=350 height=350></td>
   </tr>
  </table>
  
